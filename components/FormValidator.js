@@ -1,16 +1,3 @@
-/* 
-In validate.js, we pass data from function to function using 
-arguments. In FormValidator.js this is largely unnecessary. 
-Instead, data (such as elements, selectors, and classes) should 
-be assigned to the this object, which makes them available 
-everywhere in the class.
-
-The one exception is the parameter referred to as inputElement 
-(singular). The functions that access an individual input 
-element need to know which input element to operate on, and 
-this information should be provided in the form of an argument.
-*/
-
 class FormValidator {
   constructor(settings, formElement) {
     this._inputSelector = settings.inputSelector;
@@ -90,7 +77,6 @@ class FormValidator {
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this.resetValidation();
     });
     this._setEventListeners();
     this._toggleButtonState(this._buttonElement);
